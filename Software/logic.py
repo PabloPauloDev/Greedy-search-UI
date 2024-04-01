@@ -7,6 +7,7 @@ class logic:
         self.banco = connections(con_string)
 
     def busca(self, atual, objetivo):
+        print(atual)
         data = self.banco.connections(atual)  # Usar self.banco para acessar o atributo na instância
         visited = []
         
@@ -31,4 +32,4 @@ class testando:
 # Instanciar a classe logic
     Teste = logic()
 # Chamar o método busca
-    Teste.busca('Sibiu', 'Oradea')
+    Teste.busca('Arad', 'Sibiu')

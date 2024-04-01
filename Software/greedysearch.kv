@@ -3,23 +3,44 @@
     GridLayout:
 
 
-        cols: 2  # Define o número de colunas
-        rows: 1  # Define o número de linhas
+        cols: 1  # Define o número de colunas
+        rows: 2  # Define o número de linhas
         spacing: 10  # Define o espaçamento entre os widgets
         size: root.width, root.height
 
+        GridLayout:
+            cols: 2
+            rows: 2
+
+            Label:
+                text: "Escolha a cidade de origem:"
+                size: self.texture_size
+                
+            Spinner:
+                values: "Arad", "Zerind", "Sibiu", "Timisoara", "Oradea", "Fagaras", "Rimnicu", "Lugoj", "Mehadia", "Dobreta", "Craiova", "Pitesti", "Bucharest", "Giurgiu"
+
+
+            Label:
+                text: "Escolha a cidade de destino:"
+                size: self.texture_size
+                
+            Spinner:
+                values: "Arad", "Zerind", "Sibiu", "Timisoara", "Oradea", "Fagaras", "Rimnicu", "Lugoj", "Mehadia", "Dobreta", "Craiova", "Pitesti", "Bucharest", "Giurgiu"
+
 
         GridLayout:
-            cols: 1
-            rows: 5
-            spacing: 10
-            size: root.width, root.height
-            col: 2
+            cols: 2
+            rows: 1
 
+            GridLayout:
+                cols:1
+                rows:2
 
-            Button:
-                text: "Gerar Rota"
-                row: 4
-            Button:
-                text: "Gerar aa"
-                row: 2            
+                Button:
+                    text: "Gerar Rota"
+
+                Button:
+                    text: "Exibir Grafo"
+                    on_press: root.grafo()
+                
+    
