@@ -6,26 +6,30 @@ class Logic:
         con_string = 'DRIVER={SQL Server};SERVER=localhost\SQLEXPRESS;DATABASE=GreedySearch;Trusted_Connection=yes;'
         self.banco = connections(con_string)
         self.visited = []
+        self.prox = ''
 
     def busca(self, atual, objetivo):
+
         print(atual)
+        data = self.banco.connections(atual)
+        data = sorted(data, key=lambda data:int(data[1]))
+
         self.visited.append(atual)
-        data = self.banco.connections(atual)  # Usar self.banco para acessar o atributo na instância
-        
+        self.prox = ''
+
         for i in range(len(data)):
-            for j in range(2):
-                if data[i][j] != atual:
-                    self.visited.append(data[i][j])
-        if objetivo in self.visited:
-            print('Encontrado')
-            self.visited.clear()
-        else:
-            for i in range(len(data)):
-                if i == 0:
-                    reg = data[i][2]
-                    prox = data[i][i]
-                else:
-                    if reg > data[i][2]:
-                        reg = data[i][2]
-                        prox = data[i][0]
-            self.busca(prox, objetivo)  # Chamar recursivamente usando self.busca()
+            for j in range(len(data[i])):
+                if data[i][j] == objetivo:
+                    print(data)
+                    return print("encontrado")
+                if data[i][0] not in self.visited:
+                    print(data)
+                    self.prox = data[i][0]
+                    return self.busca(self.prox, objetivo)
+        return print("não encontrado")
+            
+
+        print(data)
+class teste:
+    testando = Logic()
+    testando.busca("Craiova", "Giurgiu")

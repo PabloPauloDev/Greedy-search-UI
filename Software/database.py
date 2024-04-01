@@ -6,7 +6,7 @@ class connections:
         self.cnxn = pyodbc.connect(con_string)
     def connections(self, city):
         cursor = self.cnxn.cursor()
-        cursor.execute('SELECT cidade, cidadeSec, distancia FROM conexões WHERE cidade = ? OR cidadeSec = ?', (city, city))
+        cursor.execute('SELECT cidadeSec, distancia FROM conexões WHERE cidade = ?', (city))
         results = cursor.fetchall()
         return results
 
