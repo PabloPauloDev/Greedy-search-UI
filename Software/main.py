@@ -1,6 +1,6 @@
 from kivy.app import App
 from kivy.uix.widget import Widget
-from logic import logic
+from logic import Logic
 from graph import graph
 
 class MeuLayout(Widget):
@@ -8,6 +8,11 @@ class MeuLayout(Widget):
     def grafo(self):
         grafo = graph()
         grafo.gerar_grafo()
+
+    def buscar(self):
+
+        logic = Logic()
+        logic.busca(self.ids.origem.text, self.ids.destino.text)
 
 
 

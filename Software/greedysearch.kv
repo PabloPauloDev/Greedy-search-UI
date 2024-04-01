@@ -17,6 +17,7 @@
                 size: self.texture_size
                 
             Spinner:
+                id: origem
                 values: "Arad", "Zerind", "Sibiu", "Timisoara", "Oradea", "Fagaras", "Rimnicu", "Lugoj", "Mehadia", "Dobreta", "Craiova", "Pitesti", "Bucharest", "Giurgiu"
 
 
@@ -25,6 +26,7 @@
                 size: self.texture_size
                 
             Spinner:
+                id: destino
                 values: "Arad", "Zerind", "Sibiu", "Timisoara", "Oradea", "Fagaras", "Rimnicu", "Lugoj", "Mehadia", "Dobreta", "Craiova", "Pitesti", "Bucharest", "Giurgiu"
 
 
@@ -38,6 +40,7 @@
 
                 Button:
                     text: "Gerar Rota"
+                    on_press: root.buscar()
 
                 Button:
                     text: "Exibir Grafo"
