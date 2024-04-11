@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 class graph:
 
-    def gerar_grafo(self):
+    def gerar_grafo(self, lista):
         # Criando um grafo direcionado
         G = nx.DiGraph()
 
@@ -27,7 +27,6 @@ class graph:
             (16, "Pitesti", "Bucharest", 101),
             (17, "Bucharest", "Giurgiu", 90)
         ]
-
         for edge_id, source, target, weight in edges:
             G.add_edge(source, target, weight=weight)
         

@@ -7,10 +7,11 @@ class Logic:
         self.banco = connections(con_string)
         self.visited = []
         self.prox = ''
+        self.texto = ''
 
     def busca(self, atual, objetivo):
 
-        print(atual)
+        self.texto += atual + '\n'
         data = self.banco.connections(atual)
         data = sorted(data, key=lambda data:int(data[1]))
 
@@ -19,17 +20,21 @@ class Logic:
 
         for i in range(len(data)):
             for j in range(len(data[i])):
+                if objetivo == atual:
+                    self.texto += 'Voce ja esta no seu destino'
+                    return
                 if data[i][j] == objetivo:
-                    print(data)
-                    return print("encontrado")
-                if data[i][0] not in self.visited:
-                    print(data)
-                    self.prox = data[i][0]
-                    return self.busca(self.prox, objetivo)
-        return print("não encontrado")
-            
-
-        print(data)
-class teste:
-    testando = Logic()
-    testando.busca("Craiova", "Giurgiu")
+                    for value in data:
+                        self.texto += str(value) + "\n"
+                    self.texto += '-------------------------\n'
+                    self.texto += "encontrado"
+                    return
+                
+        for i in range(len(data)):
+            if data[i][0] not in self.visited:
+                for value in data:
+                    self.texto += str(value) + "\n"
+                self.texto += '-------------------------\n'
+                self.prox = data[i][0]
+                return self.busca(self.prox, objetivo)
+        self.texto += "não encontrado"
